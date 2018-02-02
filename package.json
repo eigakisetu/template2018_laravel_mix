@@ -4,13 +4,22 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "dev": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "dev":"npm-run-all dev:*",
+    "dev:clean":"rm -rf public/assets",
+    "dev:webpack": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dev:icons":"cp -r resources/assets/icons public/assets/icons",
+    "dev:images":"cp -r resources/assets/images public/assets/images",
+    "prod":"npm-run-all prod:*",
+    "prod:clean":"rm -rf public/assets",
+    "prod:webpack": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod:icons":"cp -r resources/assets/icons public/assets/icons",
+    "prod:images":"cp -r resources/assets/images public/assets/images"
   },
   "dependencies": {
     "cross-env": "^3.2.3",
     "laravel-mix": "^0.8.8",
-    "node-sass": "^4.5.0"
+    "node-sass": "^4.5.0",
+    "npm-run-all": "^4.1.2"
   }
 }
