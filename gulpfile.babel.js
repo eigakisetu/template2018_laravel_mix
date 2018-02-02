@@ -9,7 +9,7 @@ global.build = [];
 global.src = "./";
 global.dest = "./public/";
 global.minifyOption = {
-	"pug": true
+	"pug": process.env.NODE_ENV == 'production' ? true : false
 };
 
 require("./pug.js");
